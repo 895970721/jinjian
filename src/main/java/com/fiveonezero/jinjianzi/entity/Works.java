@@ -1,4 +1,4 @@
-package com.fiveonezero.jinjianzi;
+package com.fiveonezero.jinjianzi.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
