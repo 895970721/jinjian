@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class WorksController {
@@ -22,6 +23,23 @@ public class WorksController {
     public List<Works> worksItem1(@RequestParam("user_id") Integer user_id){
         return worksRepository.findItemByUserId(user_id);
     }
+
+    /**
+     * 查找全部作品
+     * **/
+    @GetMapping(value = "/allworks")
+    public List<Works> allWorks(){
+        return worksRepository.findAll();
+    }
+
+    /**
+     * 查找全部作品加用户昵称
+     * **/
+    @PostMapping(value = "/allworks")
+    public List<Map> findWorksAndNick_name(){
+        return worksRepository.findWorksAndNick_name();
+    }
+
 
     /**
      * 通过作品id找作品

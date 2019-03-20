@@ -1,6 +1,5 @@
 package com.fiveonezero.jinjianzi.Controller;
 
-import com.fiveonezero.jinjianzi.Repository.UserRepository;
 import com.fiveonezero.jinjianzi.Service.impl.RegisterServiceImpl;
 import com.fiveonezero.jinjianzi.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
