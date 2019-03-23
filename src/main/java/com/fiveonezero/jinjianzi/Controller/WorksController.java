@@ -40,6 +40,13 @@ public class WorksController {
         return worksRepository.findWorksAndNick_name();
     }
 
+    /**
+     * 随机查找全部作品加用户昵称中的16条
+     * **/
+    @PostMapping(value = "/allworks/limit")
+    public List<Map> findWorksAndNick_namelimit(){
+        return worksRepository.findWorksAndNick_namelimit();
+    }
 
     /**
      * 通过作品id找作品
