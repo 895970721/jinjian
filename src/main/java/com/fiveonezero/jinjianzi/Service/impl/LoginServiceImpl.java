@@ -8,13 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class LoginServiceImpl implements LoginService {
     @Autowired
     private UserRepository userRepository;
-
-
 
     @Override
     public List<User> findByUsernameAndUserpassword(String username, String password) {

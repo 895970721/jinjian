@@ -55,6 +55,12 @@ public class WorksController {
     public List<Works> worksItem2(@RequestParam("work_id") Integer work_id){
         return worksRepository.findItemByWorkId(work_id);
     }
-
+    /**
+     * 通过用户id找点赞的作品
+     */
+    @PostMapping(value = "/like_works")
+    public List<Map> findLikeWorks(@RequestParam("user_id") Integer user_id){
+        return worksRepository.findLikeWorks(user_id);
+    }
 
 }

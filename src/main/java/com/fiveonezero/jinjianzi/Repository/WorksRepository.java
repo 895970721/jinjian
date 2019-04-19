@@ -19,6 +19,7 @@ public interface WorksRepository extends JpaRepository<Works,Integer> {
     //随机全部作品加用户昵称中的16条
     @Query(value = "select works.*,user.nick_name from user inner join works\ton  user.user_id=works.user_id  order by rand() limit 16",nativeQuery = true)
     List<Map> findWorksAndNick_namelimit();
-
-
+    //查找用户点赞的作品
+    @Query(value = "select * from works where works_id = ANY(select work_id from likes where user_id = ?1)",nativeQuery = true)
+    List<Map> findLikeWorks(Integer userId);
 }
