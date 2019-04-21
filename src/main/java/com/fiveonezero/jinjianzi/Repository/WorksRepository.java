@@ -28,11 +28,11 @@ public interface WorksRepository extends JpaRepository<Works,Integer> {
     //增加点赞
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO likes (user_id,work_id) VALUES(?1,?2)" ,nativeQuery = true)
+    @Query(value = "CALL add_start(?1,?2)" ,nativeQuery = true)
     int addLike(Integer user_id,Integer work_id);
     //删除点赞
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM likes WHERE (user_id = ?1 AND work_id = ?2)" ,nativeQuery = true)
+    @Query(value = "CALL cancel_start(?1,?2)" ,nativeQuery = true)
     int removeLike(Integer user_id,Integer work_id);
 }
