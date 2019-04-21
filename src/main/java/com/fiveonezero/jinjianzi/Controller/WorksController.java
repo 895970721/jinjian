@@ -90,4 +90,13 @@ public class WorksController {
             return "取消点赞失败";
         }
     }
+    /**
+     * 查找是否用户点赞
+     */
+    @PostMapping(value = "/isLike")
+    public List<Map> findisLike(
+            @RequestParam("user_id") Integer user_id,
+            @RequestParam("work_id") Integer work_id){
+        return worksRepository.findisLike(user_id,work_id);
+    }
 }

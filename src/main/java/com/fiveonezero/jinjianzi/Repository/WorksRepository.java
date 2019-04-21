@@ -35,4 +35,6 @@ public interface WorksRepository extends JpaRepository<Works,Integer> {
     @Transactional
     @Query(value = "CALL cancel_start(?1,?2)" ,nativeQuery = true)
     int removeLike(Integer user_id,Integer work_id);
+    @Query(value = "select * from likes where (user_id = ?1 and work_id = ?2)",nativeQuery = true)
+    List<Map> findisLike(Integer user_id,Integer work_id);
 }
