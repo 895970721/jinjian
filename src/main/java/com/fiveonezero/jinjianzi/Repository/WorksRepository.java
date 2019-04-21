@@ -2,7 +2,10 @@ package com.fiveonezero.jinjianzi.Repository;
 
 import com.fiveonezero.jinjianzi.entity.Works;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 
@@ -22,4 +25,14 @@ public interface WorksRepository extends JpaRepository<Works,Integer> {
     //查找用户点赞的作品
     @Query(value = "select * from works where works_id = ANY(select work_id from likes where user_id = ?1)",nativeQuery = true)
     List<Map> findLikeWorks(Integer userId);
+    //增加点赞
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO likes (user_id,work_id) VALUES(?1,?2)" ,nativeQuery = true)
+    int addLike(Integer user_id,Integer work_id);
+    //删除点赞
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM likes WHERE (user_id = ?1 AND work_id = ?2)" ,nativeQuery = true)
+    int removeLike(Integer user_id,Integer work_id);
 }

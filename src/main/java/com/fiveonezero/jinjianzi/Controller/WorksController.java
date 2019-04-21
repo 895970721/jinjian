@@ -62,5 +62,32 @@ public class WorksController {
     public List<Map> findLikeWorks(@RequestParam("user_id") Integer user_id){
         return worksRepository.findLikeWorks(user_id);
     }
-
+    /**
+     * 通过用户id,作品id,增加点赞
+     */
+    @PostMapping(value = "/add_like")
+    public String addLike(
+            @RequestParam("user_id") Integer user_id,
+            @RequestParam("work_id") Integer work_id
+    ){
+        if(worksRepository.addLike(user_id,work_id)==1){
+            return "插入成功";
+        }else{
+            return "插入失败";
+        }
+    }
+    /**
+     * 通过用户id,作品id,取消点赞
+     */
+    @PostMapping(value = "/remove_like")
+    public String removeLike(
+            @RequestParam("user_id") Integer user_id,
+            @RequestParam("work_id") Integer work_id
+    ){
+        if(worksRepository.removeLike(user_id,work_id)==1){
+            return "取消点赞成功";
+        }else{
+            return "取消点赞失败";
+        }
+    }
 }
